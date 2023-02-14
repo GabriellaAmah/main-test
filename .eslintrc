@@ -1,0 +1,39 @@
+{
+    "extends": "airbnb-base",
+    "plugins": ["import", "simple-import-sort"],
+    "env":{
+      "jest": true
+    },
+    "rules": {
+      "semi": "off",
+      "max-len": "off",
+      "no-underscore-dangle": "off",
+      "no-console": "off",
+      "no-continue": "off",
+      "no-new": "off",
+      "arrow-parens": "off",
+      "prefer-destructuring": "off",
+      "camelcase": "off",
+      "comma-dangle": "off",
+      "no-plusplus": "off",
+      "func-names": "off",
+      "no-unused-vars": ["warn"],
+      "no-await-in-loop": ["warn"],
+      "no-extra-semi": ["warn"],
+      "consistent-return": "off",
+      "quotes": ["warn", "double", { "allowTemplateLiterals": true }],
+      "object-curly-newline": "off",
+      "import/no-unresolved": "off",
+      "simple-import-sort/sort": "warn",
+      "sort-imports": "error",
+      "import/order": ["warn", { "newlines-between": "always" }],
+      "import/extensions": "off",
+      "no-param-reassign": [
+        "off",
+        {
+          "props": false
+        }
+      ]
+    }
+  }
+  
