@@ -5,13 +5,10 @@ import { BaseModel } from "../interface/product";
 export class BaseRepository<TModel>{
 
   name: string
-  schema: Schema
   model: any
 
   constructor(name: string, schema: Schema) {
     this.name = name;
-    this.schema = schema;
-
     this.model = mongoose.model(name, schema)
   }
 
@@ -27,7 +24,7 @@ export class BaseRepository<TModel>{
 
   }
 
-  async findOne(query: BaseModel<TModel>): Promise<BaseModel<TModel>> {
+  async findOne(query: BaseModel<TModel>): Promise<BaseModel<TModel>>  {
     try {
       const data = await this.model.findOne({
         ...query
@@ -65,7 +62,7 @@ export class BaseRepository<TModel>{
 
   }
 
-  async findAndPaginate(query: BaseModel<TModel>, pagination: { page: number, limit: number, sort: string }) {
+  async findAndPaginate(query: BaseModel<TModel>, pagination: { page: number, limit: number, sort: string }): Promise<any> {
     try {
       const page = Number(pagination.page) - 1 || 0;
       const limit = Number(pagination.limit) || 20;
