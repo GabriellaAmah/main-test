@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "rimraf build/ && tsc",
+    "lint:fix": "eslint --fix . && echo 'Linter successfully completed.'",
     "lint": "eslint",
     "start": "yarn build && node build/index.js",
     "test": "jest"
