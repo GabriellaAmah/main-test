@@ -10,7 +10,7 @@ describe("ProductController", () => {
                 json: (val: any) => val
             }
         }
-    } as Response
+    } as unknown as Response
 
     beforeEach(() => {
         productController = new ProductController({
@@ -34,7 +34,7 @@ describe("ProductController", () => {
                     price: 30,
                     imageUrl: "dummy-url"
                 }
-            } as Request
+            } as unknown as Request
             const data = await productController.createProduct(mockRequest, mockResponse)
 
             expect(data).toEqual({
@@ -57,7 +57,7 @@ describe("ProductController", () => {
                     price: 30,
                     imageUrl: "dummy-url"
                 }
-            } as Request
+            } as  unknown as Request
 
             jest.spyOn(productController.service, "createProduct").mockImplementation(async () => Promise.reject(new Error()))
             const data = await productController.createProduct(mockRequest, mockResponse)
