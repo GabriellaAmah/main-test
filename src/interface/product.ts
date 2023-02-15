@@ -3,7 +3,7 @@ import {Connection, Document} from "mongoose";
 export interface IProduct {
     name: string
     price: number
-    description: number,
+    description: string,
     imageUrl: string
 }
 
