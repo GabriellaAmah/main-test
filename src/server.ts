@@ -1,13 +1,13 @@
-import express from 'express';
+import express, { Application } from 'express';
 import router from './routes';
 import cors from "cors";
 import compression from "compression";
 import helmet from 'helmet';
 
 
-export const app = express();
+export const app: Application = express();
 
-function middlewareLaunch(){
+function middlewareLaunch(): void{
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(cors())
@@ -15,7 +15,7 @@ function middlewareLaunch(){
     app.use(helmet())
 }
 
-function routerLaunch(){
+function routerLaunch(): void{
     app.use("/v1/", router)
 
     app.get("/", (req, res) => {
@@ -29,7 +29,7 @@ function routerLaunch(){
     });
 }
 
-export function build(){
+export function build(): Application{
     middlewareLaunch()
     routerLaunch()
 

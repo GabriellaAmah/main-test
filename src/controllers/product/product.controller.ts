@@ -12,7 +12,7 @@ export class ProductController{
     }
 
 
-    async createProduct(req: Request, res: Response){
+    async createProduct(req: Request, res: Response): Promise<Response>{
         try{
             const product  = await this.service.createProduct(req.body)
 
@@ -29,7 +29,7 @@ export class ProductController{
         }
     }
 
-    async getSingleProduct(req: Request, res: Response){
+    async getSingleProduct(req: Request, res: Response): Promise<Response>{
         try{
             const {id} = req.params as any
             const product  = await this.service.getSingleProduct(id)
@@ -47,7 +47,7 @@ export class ProductController{
         }
     }
 
-    async updateProduct(req: Request, res: Response){
+    async updateProduct(req: Request, res: Response): Promise<Response>{
         try{
             const {id} = req.params as any
             const body = req.body as unknown as IProductModel
@@ -66,7 +66,7 @@ export class ProductController{
         }
     }
 
-    async deleteProduct(req: Request, res: Response){
+    async deleteProduct(req: Request, res: Response): Promise<Response>{
         try{
             const {id} = req.params as any
              await this.service.deleteSingleProduct(id)
@@ -83,7 +83,7 @@ export class ProductController{
         }
     }
 
-    async getAllProduct(req: Request, res: Response){
+    async getAllProduct(req: Request, res: Response): Promise<Response>{
         try{
           const query = req.query as any 
 
