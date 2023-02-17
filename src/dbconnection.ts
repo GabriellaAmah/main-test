@@ -1,5 +1,5 @@
 import {config} from "./config"
-import mongoose, {ConnectOptions, Connection} from "mongoose";
+import mongoose, {ConnectOptions, Connection, Error} from "mongoose";
 
 class Dbconnection {
     isTest: boolean
@@ -44,8 +44,8 @@ class Dbconnection {
             console.log("Mongoose reconnected.");
           });
 
-       }catch(error){
-        
+       }catch(error: any){
+        return error
        }
     }
 
@@ -53,7 +53,7 @@ class Dbconnection {
         return "url"
     }
 
-    async disconnect() {
+    async disconnect(): Promise<any> {
         this.connection.removeAllListeners("error");
         this.connection.removeAllListeners("open");
         this.connection.removeAllListeners("disconnected");

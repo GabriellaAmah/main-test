@@ -9,12 +9,12 @@ class ErrorResponse extends Error{
     }
 }
 
-export function produceError(code: number, message: string){
+export function produceError(code: number, message: string): ErrorResponse{
    return new ErrorResponse( code, message);
    
 }
 
-export const handleValidationError = async (req: Request, res: Response, next: NextFunction, validation: any) => {
+export const handleValidationError = async (req: Request, res: Response, next: NextFunction, validation: any): Promise<void | Response> => {
     try {
       const validate = await validation;
       if (validate.error) {

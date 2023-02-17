@@ -2,7 +2,7 @@ import { NextFunction, Response, Request } from "express"
 import joi from "joi"
 import { handleValidationError } from "../../helpers/error"
 
-export const validateCreateProduct = (req: Request, res: Response, next: NextFunction): any => {
+export const validateCreateProduct = (req: Request, res: Response, next: NextFunction): Promise<void | Response> => {
     const schema = joi.object({
         name: joi.string()
         .required()
@@ -25,7 +25,7 @@ export const validateCreateProduct = (req: Request, res: Response, next: NextFun
    return handleValidationError(req, res, next, schema.validate(req.body))
 }
 
-export const validateUpdateProduct = (req: Request, res: Response, next: NextFunction): any => {
+export const validateUpdateProduct = (req: Request, res: Response, next: NextFunction): Promise<void | Response> => {
     const schema = joi.object({
         name: joi.string()
         .label("Product name"),
@@ -44,7 +44,7 @@ export const validateUpdateProduct = (req: Request, res: Response, next: NextFun
    return handleValidationError(req, res, next, schema.validate(req.body))
 }
 
-export const validateProductId = (req: Request, res: Response, next: NextFunction): any => {
+export const validateProductId = (req: Request, res: Response, next: NextFunction): Promise<void | Response> => {
     const schema = joi.object({
         id: joi.string()
         .required()
@@ -54,7 +54,7 @@ export const validateProductId = (req: Request, res: Response, next: NextFunctio
    return handleValidationError(req, res, next, schema.validate(req.params))
 }
 
-export const validateGetAllProducts = (req: Request, res: Response, next: NextFunction): any => {
+export const validateGetAllProducts = (req: Request, res: Response, next: NextFunction): Promise<void | Response> => {
     const schema = joi.object({
         name: joi.string()
         .label("Product name"),
